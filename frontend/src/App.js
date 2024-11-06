@@ -83,6 +83,11 @@ import AuthLoading from './pages/AuthLoading';
 import PrivateRoute from './pages/PrivateRoute'; // Import the PrivateRoute component
 import ProfilePage from './pages/ProfilePage';
 import Logout from './pages/LogOut';
+import Customerhomeservices from './pages/CustomerHomeservices'
+//import TaskersList from './pages/Taskers'
+import ServiceCategory from "./pages/Taskerhome"
+import Taskers from "./pages/Taskers"
+import Payment from './pages/Payment/payment';
 
 
 const checkTokenExpiration = () => {
@@ -97,6 +102,8 @@ const checkTokenExpiration = () => {
 
 checkTokenExpiration();
 
+
+
 function App() {
   return (
     <Router>
@@ -106,11 +113,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Customerhome" element={<Customerhome />} />
+            <Route path="/Customerhomeservices" element={<Customerhomeservices />} />
             <Route path="/services" element={<Services />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} ></Route>
             <Route path="/authlanding" element={<AuthLoading />} />
+            <Route path="/Taskers" element={<Taskers />} />
+            <Route path="/Taskerhome" element={<ServiceCategory />} />
+            <Route path="/payment" element={<Payment />} />
 
             {/* Protected Routes */}
             <Route 

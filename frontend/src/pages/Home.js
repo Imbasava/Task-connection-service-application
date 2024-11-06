@@ -27,7 +27,7 @@ const FirstHomePage = () => {
                         {/* Navigate to Tasker Homepage */}
                         <button 
                             className="bg-green-500 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-green-600 transition duration-300"
-                            onClick={() => navigate('/tasker-home')} // Navigate to TaskerHome
+                            onClick={() => navigate('/Taskerhome')} // Navigate to TaskerHome
                         >
                             Find Service
                         </button>
