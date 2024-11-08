@@ -29,6 +29,7 @@ function TaskerProfile() {
           setPincode(data.pincode);
           setBio(data.bio);
           if (data.image) setImage(data.image); // Handle image URL if stored as path
+          
         } else {
           console.log('Profile not found or user is not authorized');
         }
@@ -70,6 +71,8 @@ function TaskerProfile() {
         const taskerProfileId = result.taskerProfileId; // Retrieve the taskerProfileId from the response
         sessionStorage.setItem('taskerProfileId', taskerProfileId); // Store the taskerProfileId in sessionStorage
         console.log('Profile updated successfully, Tasker Profile ID:', taskerProfileId);
+        sessionStorage.setItem('role', 'tasker');  // or 'customer'
+
       } else {
         console.error('Error updating profile');
       }
@@ -84,10 +87,11 @@ function TaskerProfile() {
       <div className="flex justify-center mb-6">
         {image ? (
           <img
-            src={typeof image === 'string' ? image : URL.createObjectURL(image)}
-            alt="Profile"
-            className="rounded-full border-4 border-gray-300 w-32 h-32 object-cover"
-          />
+          src={typeof image === 'string' ? `http://localhost:5000/${image}` : URL.createObjectURL(image)}
+          alt="Profile"
+          className="rounded-full border-4 border-gray-300 w-32 h-32 object-cover"
+        />
+        
         ) : (
           <div className="rounded-full border-4 border-gray-300 w-32 h-32 flex items-center justify-center text-gray-500">
             Upload Image

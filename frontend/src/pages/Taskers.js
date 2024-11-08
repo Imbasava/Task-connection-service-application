@@ -8,11 +8,12 @@ function TaskersList() {
   const navigate = useNavigate();
   const serviceId = location.state?.serviceId;
 
+  // Fetch taskers data
   useEffect(() => {
     const fetchTaskers = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/Tasker/Taskers', {
-          params: { serviceId }
+          params: { serviceId },
         });
         setTaskers(response.data);
       } catch (error) {
@@ -27,37 +28,48 @@ function TaskersList() {
 
   // Handle booking action
   const handleBookTasker = (tasker) => {
-    // Save tasker details in session storage
     sessionStorage.setItem('taskerId', tasker.tasker_Profile_Id);
     sessionStorage.setItem('hourlyRate', tasker.hourlyRate);
-
-    // Navigate to the Payment page
     navigate('/payment', { state: { taskerId: tasker.tasker_Profile_Id } });
   };
 
-
-   //sessionStorage.setItem('selectedTaskerHourlyRate',hourlyRate);
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-800">Available Taskers</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-        {taskers.length > 0 ? (
-          taskers.map(tasker => (
-            <div key={tasker.tasker_Profile_Id} className="border border-gray-200 rounded-lg p-4 shadow-md">
-              <h2 className="text-xl font-bold">{tasker.taskerName}</h2>
-              <p>Experience: {tasker.experience} years</p>
-              <p>Hourly Rate: ${tasker.hourlyRate}</p>
-              <button
-                onClick={() => handleBookTasker(tasker)}
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-              >
-                Book Now
-              </button>
-            </div>
-          ))
-        ) : (
-          <p>No taskers available.</p>
-        )}
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-100 via-indigo-100 to-pink-100">
+      <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-xl">
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Available Taskers</h1>
+
+        {/* Taskers List - Horizontal Layout */}
+        <div className="taskers-container overflow-x-auto">
+          <div className="flex space-x-6">
+            {taskers.length > 0 ? (
+              taskers.map((tasker) => (
+                <div
+                  key={tasker.tasker_Profile_Id}
+                  className="tasker-card flex-none bg-white p-4 rounded-lg shadow-lg w-64 transition transform hover:scale-105 hover:shadow-2xl"
+                >
+                  <img
+                    src={`http://localhost:5000/${tasker.taskerImage}`} // Tasker Image
+                    alt={`${tasker.taskerName}'s profile`}
+                    className="tasker-image w-full h-48 object-cover rounded-md mb-4"
+                  />
+                  <div>
+                    <h2 className="text-xl font-semibold text-gray-800">{tasker.taskerName}</h2>
+                    <p className="text-gray-600 mt-2">Experience: {tasker.experience} years</p>
+                    <p className="text-gray-600">Hourly Rate: ${tasker.hourlyRate}</p>
+                    <button
+                      onClick={() => handleBookTasker(tasker)}
+                      className="book-button mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="text-gray-500 text-center col-span-full">No taskers available.</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -24,10 +24,10 @@ function HomeServices() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const taskerProfileId = sessionStorage.getItem('taskerProfileId'); // Retrieve TaskerProfile ID from session storage
+        const taskerProfileId = sessionStorage.getItem('taskerId');
 
         // Validate inputs
-        if (!taskerProfileId || !selectedSubService) {
+        if (!taskerProfileId) {
             alert('Please select a service and ensure you have a valid TaskerProfile ID.');
             return;
         }

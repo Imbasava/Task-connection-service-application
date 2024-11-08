@@ -88,22 +88,24 @@ import Customerhomeservices from './pages/CustomerHomeservices'
 import ServiceCategory from "./pages/Taskerhome"
 import Taskers from "./pages/Taskers"
 import Payment from './pages/Payment/payment';
-
+import MyTasksPage from './pages/my-tasks';
+import TaskerPayments from './pages/tasker-payment';
 
 const checkTokenExpiration = () => {
-  const expiration = localStorage.getItem('tokenExpiration');
+  const expiration = sessionStorage.getItem('tokenExpiration');
   if (expiration && Date.now() > expiration) {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('tokenExpiration');
+    console.log("Token expired. Clearing session...");
+    sessionStorage.removeItem('authToken');
+    sessionStorage.removeItem('tokenExpiration');
     // Optionally, redirect to login if needed
     window.location.href = '/login';  // Redirect to login page
   }
 };
 
 checkTokenExpiration();
+// <Route path="/payment" element={<Payment />} />
 
-
-
+//<Route path="/Taskerhome" element={<ServiceCategory />} />
 function App() {
   return (
     <Router>
@@ -120,8 +122,8 @@ function App() {
             <Route path="/logout" element={<Logout />} ></Route>
             <Route path="/authlanding" element={<AuthLoading />} />
             <Route path="/Taskers" element={<Taskers />} />
-            <Route path="/Taskerhome" element={<ServiceCategory />} />
-            <Route path="/payment" element={<Payment />} />
+            
+           
 
             {/* Protected Routes */}
             <Route 
@@ -180,7 +182,39 @@ function App() {
           </PrivateRoute>
         } 
       />
-            
+        <Route 
+            path="/my-tasks" 
+            element={
+              <PrivateRoute>
+                <MyTasksPage/>
+              </PrivateRoute>
+              } 
+      />
+      <Route 
+              path="/payment" 
+              element={
+                <PrivateRoute>
+                  <Payment />
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/Taskerhome" 
+              element={
+                <PrivateRoute>
+                  <ServiceCategory />
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/payments" 
+              element={
+                <PrivateRoute>
+                  <TaskerPayments />
+                </PrivateRoute>
+              } 
+            />
+
             <Route path="/service-added" element={<ServiceAdded />} />
             <Route path="/create-profile" element={<CreateProfile />} />
           </Routes>

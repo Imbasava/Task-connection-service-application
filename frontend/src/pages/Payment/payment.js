@@ -451,7 +451,7 @@ export default Payment;
 
 
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const Payment = () => {
@@ -566,6 +566,9 @@ const Payment = () => {
 
             if (res.data.success) {
               alert('Payment verified and booking details saved!');
+              sessionStorage.setItem('role', 'customer');  // or 'customer'
+              Navigate('./Taskerhome')
+
             } else {
               alert('Error saving booking details');
             }

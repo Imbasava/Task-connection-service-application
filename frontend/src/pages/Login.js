@@ -30,8 +30,11 @@ function Login() {
       const { token, userID, name } = response.data;
 
       sessionStorage.setItem('authToken', token);
-      const expirationTime = Date.now() + 3600 * 1000; // 1 hour in milliseconds
+      const expirationTime = Date.now() + 1800 * 1000; // 1 hour in milliseconds
       sessionStorage.setItem('tokenExpiration', expirationTime);
+      console.log("Token Expiration:", expirationTime);
+      console.log("Current Time:", Date.now());
+
       sessionStorage.setItem('userID', userID);
       sessionStorage.setItem('name', name);
 
