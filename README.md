@@ -83,7 +83,8 @@ The **backend** is developed using [mention backend framework, e.g., Node.js, Sp
      ```
 
 4. **Access the application**:  
-   Open your browser and navigate to `http://3.92.60.64:3000` (default port for the frontend).
+  Open your browser and navigate to [http://3.92.60.64:3000](http://3.92.60.64:3000) (default port for the frontend).
+
 
 ---
 
