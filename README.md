@@ -62,7 +62,7 @@ The **backend** is developed using [mention backend framework, e.g., Node.js, Sp
    - **Backend**:
      ```bash
      cd backend
-     npm run start
+     node server.js
      ```
 
 4. **Access the application**:  
@@ -89,12 +89,12 @@ The **backend** is developed using [mention backend framework, e.g., Node.js, Sp
 ### Frontend
 - React
 - Tailwind CSS
-- [Other tools/libraries]
+- Razropay interface
 
 ### Backend
 - Node.js with Express
-- MongoDB/PostgreSQL (or your chosen database)
-- [Other tools/libraries]
+- Mysql/PostgreSQL (or your chosen database)
+
 
 ---
 
