@@ -4,6 +4,23 @@
 
 This project is a platform designed to create employment opportunities by connecting skilled workers with employers. It enables users to easily search for and hire services for tasks like plumbing, cleaning, gardening, painting, and other fieldwork. Workers are paid on an hourly basis, providing flexibility and transparency. The platform includes a secure payment interface powered by Razorpay, ensuring seamless and safe transactions. With its user-friendly design, worker profiles, task reviews, and intelligent matching system, it offers an efficient solution for task-based employment.
 
+### Visuals
+
+Below are some images from the frontend directory showcasing the application interface:
+
+1. **Homepage**  
+   ![Homepage](./frontend/home.png)
+
+2. **Task Listing**  
+   ![Task Listing](./frontend/tasker.png)
+
+3. **Worker Profile**  
+   ![Worker Profile](./frontend/images/worker-profile.png)
+
+4. **Payment Interface**  
+   ![Payment Interface](./frontend/images/payment-interface.png)
+
+>
 
 ### Frontend
 The **frontend** is built using [mention framework/library, e.g., React], providing a seamless and intuitive interface for users to find or post tasks.
