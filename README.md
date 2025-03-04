@@ -122,24 +122,23 @@ Contributions are welcome!
 
 1. Fork the repository.
 2. Create a new branch:  
-   ```bash
-   git checkout -b feature-name
-   ```
+  
 3. Commit your changes:  
-   ```bash
-   git commit -m "Description of changes"
-   ```
+   
 4. Push to the branch:  
-   ```bash
-   git push origin feature-name
-   ```
+  
 5. Open a pull request.
 
 ---
 
 ## License
 
-This project is licensed under the [License Name]. See the [LICENSE](./LICENSE) file for details.
+## License
+
+This project is licensed under the **Custom Open License (COL) 1.0**.  
+You are free to use, modify, and distribute the code with proper attribution.  
+
+See the [LICENSE](./license) file for the complete terms and conditions.
 ```
 
 You can replace placeholders like `[version]` and `[Other tools/libraries]` with the actual details from your project. Let me know if further customization is needed!
