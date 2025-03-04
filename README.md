@@ -14,11 +14,11 @@ Below are some images from the frontend directory showcasing the application int
 2. **Task Listing**  
    ![Task Listing](./frontend/tasker.png)
 
-3. **Worker Profile**  
-   ![Worker Profile](./frontend/images/worker-profile.png)
+3. **Bookings**  
+   ![Worker Profile](./frontend/Bookings.png)
 
 4. **Payment Interface**  
-   ![Payment Interface](./frontend/images/payment-interface.png)
+   ![Payment Interface](./frontend/payment.png)
 
 >
 
@@ -46,7 +46,7 @@ The **backend** is developed using [mention backend framework, e.g., Node.js, Sp
 - Node.js [version]
 - SQL Database (e.g., MySQL or PostgreSQL)
 - Razorpay account for payment integration
-- [Other prerequisites, if any]
+
 
 ### Steps
 1. Clone the repository:
