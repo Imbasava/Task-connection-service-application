@@ -1,0 +1,91 @@
+-- MySQL Database Schema for Your Backend Application
+
+-- 1. Users Table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    age INT,
+    phone VARCHAR(20),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- 2. TaskerProfile Table
+CREATE TABLE TaskerProfile (
+    tasker_profile_id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT NOT NULL,
+    bio TEXT,
+    area VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    pincode VARCHAR(20),
+    availability_status INT DEFAULT 1,
+    image VARCHAR(500),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE(id)
+);
+
+-- 3. Services Table
+CREATE TABLE services (
+    service_id INT AUTO_INCREMENT PRIMARY KEY,
+    service_name VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 4. ProvideService Table
+CREATE TABLE ProvideService (
+    provide_service_id INT AUTO_INCREMENT PRIMARY KEY,
+    tasker_profile_id INT NOT NULL,
+    service_id INT NOT NULL,
+    experience VARCHAR(255),
+    hourly_Rate DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (tasker_profile_id) REFERENCES TaskerProfile(tasker_profile_id) ON DELETE CASCADE,
+    FOREIGN KEY (service_id) REFERENCES services(service_id) ON DELETE CASCADE,
+    UNIQUE(tasker_profile_id, service_id)
+);
+
+-- 5. Booking Table
+CREATE TABLE booking (
+    booking_id INT AUTO_INCREMENT PRIMARY KEY,
+    tasker_id INT NOT NULL,
+    user_id INT NOT NULL,
+    total_amount DECIMAL(10,2) NOT NULL,
+    partial_amount DECIMAL(10,2) DEFAULT 0.00,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    total_hours DECIMAL(5,2),
+    booking_status VARCHAR(50) DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (tasker_id) REFERENCES TaskerProfile(tasker_profile_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Create indexes for better performance
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_taskerprofile_user_id ON TaskerProfile(id);
+CREATE INDEX idx_provideservice_tasker_id ON ProvideService(tasker_profile_id);
+CREATE INDEX idx_provideservice_service_id ON ProvideService(service_id);
+CREATE INDEX idx_booking_tasker_id ON booking(tasker_id);
+CREATE INDEX idx_booking_user_id ON booking(user_id);
+
+-- Insert sample services
+INSERT INTO services (service_name, description) VALUES
+('House Cleaning', 'Professional house cleaning services'),
+('Plumbing', 'Plumbing repair and installation services'),
+('Electrical Work', 'Electrical repair and installation services'),
+('Gardening', 'Garden maintenance and landscaping'),
+('Carpentry', 'Wood work and furniture repair'),
+('Painting', 'Interior and exterior painting services'),
+('AC Repair', 'Air conditioning repair and maintenance'),
+('Appliance Repair', 'Home appliance repair services');
