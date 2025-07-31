@@ -6,7 +6,7 @@ This project is a platform designed to create employment opportunities by connec
 
 
 **Access the application**:  
-  Live demo:[http://3.92.60.64:3000](http://3.92.60.64:3000) 
+  Live demo:[https://task-connection-service-application.vercel.app/](https://task-connection-service-application.vercel.app/) 
 
 ### Visuals
 
