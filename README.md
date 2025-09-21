@@ -145,4 +145,3 @@ You are free to use, modify, and distribute the code with proper attribution.
 See the [LICENSE](./license.txt) file for the complete terms and conditions.
 ```
 
-You can replace placeholders like `[version]` and `[Other tools/libraries]` with the actual details from your project. Let me know if further customization is needed!
